@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Coder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@700&family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+      .custom-font-merriweather { font-family: 'Merriweather', serif; }
+      .custom-font-opensans { font-family: 'Open Sans', sans-serif; }
+    </style>
+</head>
+<body style="background-color: black; color: white;">
+    
+    
+<!-- <div class="container mt-5">
+    <h2 class="mb-4">Create beautiful HTML + Tailwind CSS Landing Pages from Screenshots✨</h2>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="imageUpload">Choose an image:</label>
+            <input type="file" class="form-control-file " id="imageUpload" name="file" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload and Analyze</button>
+    </form>
+    
+    <div id="result" class="mt-4"></div>
+
+
+    <textarea id="code" class="form-control mt-4" rows="10" readonly>{{ code }}</textarea>
+
+
+    <button id="copyButton" class="btn btn-outline-light mt-2">Copy Code</button> -->
+
+    {% if current_user.is_authenticated %}
+    <div class="container mt-4 p-1 border rounded" style="width:500px;">
+        <div class="row mx-auto">
+            <div class="col text-center mt-2 ml-3">
+                <p><img width="50" class="border rounded-circle" src="{{current_user.profile_pic}}"></p>
+            </div>
+            <div class="col text-center text-2xl">
+                <h2>Ayooo, {{current_user.name}}!</h2>
+            </div>
+            <div class="col text-center mt-3">
+                <p><a class="border p-2 rounded hover-overlay ripple shadow-1-strong bg-light" style="color:black; width: 20%;" href="/logout">Logout</a></p>
+            </div>
+            <!-- <p><img src="{{current_user.profile_pic}}"></p>-->
+        
+        </div>
+    </div>
+
+    <div class="container mt-5 mx-auto">
+        <h2 class="mb-4 text-4xl">-- Create beautiful HTML + Tailwind CSS Landing Pages from Screenshots✨ --</h2>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="imageUpload">Choose an image:</label>
+                <input type="file" class="form-control-file " id="imageUpload" name="file" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload and Analyze</button>
+        </form>
+        
+        <div id="result" class="mt-4"></div>
+    
+    
+        <textarea id="code" class="form-control mt-4" rows="10" readonly>{{ code }}</textarea>
+    
+    
+        <button id="copyButton" class="btn btn-outline-light mt-2">Copy Code</button>
+{% else %}
+
+<nav class="flex flex-wrap items-center justify-between p-6">
+    <!-- navigation links left -->
+    <div class="flex items-center text-gray-400 space-x-10 mx-auto ">   
+        <a href="#" class="custom-font-merriweather hover:text-white text-4xl">𝕏</a>   
+        <a href="#works" class="custom-font-merriweather hover:text-white text-m">How it works?</a>
+      <a href="#" class="custom-font-merriweather hover:text-white text-m">Pricing</a>
+    </div>
+    <!-- logo in the middle -->
+    <a href="#" class="text-2xl font-bold text-white custom-font-opensans md:text-3xl lg:text-4xl xl:text-5xl mx-auto">Buildfast</a>
+    <!-- call to action on the right -->
+    <a href="/login" class="mx-auto border-2 border-white rounded px-4 py-2 font-bold custom-font-merriweather hover:bg-white hover:text-black">
+      Login <span class="bg-white text-black px-2">Now</span> to start using 
+    </a>
+  </nav>
+  
+  <header class="text-center mt-20">
+    <!-- tagline -->
+    <p class="text-sm font-bold text-gray-400 custom-font-merriweather uppercase tracking-widest mx-auto">-- Build Landing Pages using HTML + Tailwind CSS + Javasctipt --</p>
+    <!-- main title -->
+    <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold my-4 custom-font-opensans">
+      Convert <span class="text-blue-500">Screenshots to Code</span><br>for Building Landing Pages in "<" 2 mins
+    </h1>
+    <!-- subtitle -->
+    <p class="text-base md:text-lg mx-auto mt-8 leading-relaxed max-w-xl">
+      Upload the Screenshot Image and get the Code.<br>
+      Create high converting websites to double your MRR.
+    </p>
+    <!-- CTA button -->
+    <button onclick="window.location.href='/login'" class="bg-blue-500 text-white font-bold py-3 px-8 my-10 rounded custom-font-merriweather uppercase shadow-lg hover:bg-blue-600 transition duration-300">
+      Get started today
+    </button>
+    <!-- availability indicator -->
+    <div class="flex justify-center space-x-1 items-center mt-4">
+      <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+      <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+      <div class="w-2 h-2 bg-gray-100 rounded-full"></div>
+      <div class="w-2 h-2 bg-white rounded-full"></div>
+      <div class="w-4 h-4 bg-gray-100 rounded-full text-xs flex items-center justify-center text-white"></div>
+
+    </div>
+    <!-- trust signal -->
+    <div class="text-gray-400 font-semibold custom-font-merriweather mt-10 text-2xl mb-4">
+      How it works?
+    </div>
+    <video id="works" class="mx-auto" style="width:900px; height:400px;" controls autoplay muted>
+      <source src="https://file.notion.so/f/f/14eaa4b0-576e-47b1-9dab-cb2bf7401346/05a96ac4-5395-47b0-8bb0-f17eb5e67732/twittervid.com_kathanmehtaa_e4848a.mp4?id=ecc412e4-7065-4716-ac6d-0a69595b593a&table=block&spaceId=14eaa4b0-576e-47b1-9dab-cb2bf7401346&expirationTimestamp=1700683200000&signature=4Sxol06h1wlY9hX9Vz7uSb9K7wBkFhbPl8AEmKc_7e8&downloadName=twittervid.com_kathanmehtaa_e4848a.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+
+  <div class="container mx-auto px-10 py-20">
+    <!-- Heading section -->
+    <div class="text-center mb-20">
+        <h1 class="text-6xl font-bold mb-2">Buildfast, Supereasy</h1>      
+    </div>
+
+    <!-- Steps section -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+        <!-- Step 1 -->
+        <div class="flex-1 mb-10 md:mb-0">
+            <div class="text-6xl font-bold mb-4">1</div>
+            <h2 class="text-2xl font-bold mb-4">Take a Screenshot</h2>
+            <p class="mb-4">take the screenshot of a website or landing page you want to create</p>
+            <p class="text-gray-400 flex items-center"><i class="fas fa-credit-card mr-2"></i> Payment securely done via Stripe</p>
+        </div>
+
+        <!-- Arrows -->
+        <div class="hidden md:block mx-10">
+            <i class="fas fa-long-arrow-alt-right text-gray-400 text-4xl"></i>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex-1 mb-10 md:mb-0">
+            <div class="text-6xl font-bold mb-4">2</div>
+            <h2 class="text-2xl font-bold mb-4">Upload</h2>
+            <p class="mb-4">upload the screenshot image. click on upload and analyze to start getting the code</p>
+            <p class="text-gray-400 flex items-center"><i class="fab fa-slack-hash mr-2"></i> Powered by OpenAI Vision API</p>
+        </div>
+
+        <!-- Arrows -->
+        <div class="hidden md:block mx-10">
+            <i class="fas fa-long-arrow-alt-right text-gray-400 text-4xl"></i>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex-1 mb-10 md:mb-0">
+            <div class="text-6xl font-bold mb-4">3</div>
+            <h2 class="text-2xl font-bold mb-4">Ship</h2>
+            <p class="mb-4">Copy the code. Build your website/landing page, launch your project and watch your vision come to life.</p>
+            <p class="text-gray-400 flex items-center"><i class="fas fa-rocket mr-2"></i> Delivered in HTML, Tailwind CSS, Javascript</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mx-auto px-4 py-8 border-top">
+  <div class="flex flex-col items-center md:flex-row md:justify-between">
+      <div>
+          <h1 class="text-3xl font-bold">Buildfast</h1>
+          <p class="text-md mt-2 mb-2">Convert Screenshots to Code</p>
+          <p>© 2023 Buildfast</p>
+      </div>
+      <div class="flex items-center mt-4 md:mt-0">
+          <a href="https://twitter.com/kathanmehtaa" class="text-2xl mx-2 cursor-pointer">𝕏</a>
+          <a href="mailto:ktmehta25@gmail.com" class="text-2xl mx-2 cursor-pointer"><i class="fas fa-at"></i></a>
+      </div>
+  </div>
+</div>
+  
+  </header>
+
+  
+  
+  <!-- animated avatar image with speech bubble (Placeholder for actual image) -->
+  <div class="absolute bottom-0 right-0 mr-4 md:mr-8 lg:mr-16 mb-6">
+    <img src="https://kathann.vercel.app/memoji.jpeg" style="height:120px; width: auto;" alt="Animated avatar giving a thumbs up with speech bubble saying 'Let's get to work!'" class="rounded-full">
+  </div>
+  
+  <!-- <div class="container mx-auto mt-5 text-center">
+    <h3>Please log in to use ScreenShot to Code Generator</h3>
+    <p class="mt-5">
+      <a class="border p-2 rounded hover-overlay ripple shadow-1-strong bg-light" style="color:black; width: 80%;" href="/login">Login with Google</a>
+    </p>
+  </div> -->
+  
+{% endif %}
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+        var code = document.getElementById('code');
+        code.select();
+        document.execCommand('copy');
+    });
+</script>
+
+</body>
+</html> 
+
+
+
+
+
